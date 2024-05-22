@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>About | CRYSTAL HOME</title>
+    <style>
+        body {
+            cursor: url('path-to-your-cursor-image.png'), auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <img src="Florist Home Business Logo.jpg" alt="CRYSTAL HOME">
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="home.html" class="link active">Home</a></li>
+                    <li><a href="bookings.html" class="link">Bookings</a></li>
+                    <li><a href="facilities.html" class="link">Facilities</a></li>
+                    <li><a href="about.html" class="link">About</a></li>
+                </ul>
+                
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+                <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+            </div>
+        </nav>
+
+        <div class="content">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1>About Crystal Home</h1>
+            <br>
+
+            <br>
+            <p>At Crystal Home, we believe in creating a home away from home for everyone who walks through our doors.<br> Founded in 2024, our journey began with a simple vision: to provide comfortable, clean, and affordable<br> accommodations for travelers and locals alike.</p>
+            <br>
+            
+            <h2>Our Story</h2>
+            <p>We started with just a handful of rooms and a dream. Today, we're proud to serve thousands of guests annually,<br> offering a wide range of amenities and services designed to make your stay unforgettable. From our cozy bedrooms<br> to our state-of-the-art facilities, everything we do is centered around your comfort and satisfaction.</p>
+            <br>
+           
+            <h2>Our Mission</h2>
+            <p>Our mission is to create a welcoming environment where every guest feels valued and cared for. <br>We strive to exceed expectations by delivering exceptional service and continuously improving our offerings to <br>meet the evolving needs of our guests.</p>
+            <br>
+            
+            <h2>Why Choose Crystal Home?</h2>
+            <ul>
+                <li><strong>Comfort:</strong> Our rooms are designed with comfort in mind, featuring plush beds, quiet air conditioning, and free Wi-Fi.</li>
+                <li><strong>Amenities:</strong> Enjoy our fitness center, swimming pool, and on-site restaurant, all designed to enhance your stay.</li>
+                <li><strong>Service:</strong> Our staff is committed to providing personalized service, ensuring you have everything you need for a relaxing and enjoyable visit.</li>
+            </ul>
+            <br>
+            
+            <h2>Community Engagement</h2>
+            <p>We believe in giving back to the communities we serve. Through various initiatives, <br>we support local charities and contribute to environmental conservation efforts, reflecting our commitment to<br> sustainability and social responsibility.</p>
+            <br>
+            
+            <h2>Contact Us</h2>
+            <p>Have questions or need assistance? Feel free to reach out to us at dreamteam123@gmail.com or call 01922132. <br>We're always here to help make your stay at Crystal Home a memorable one.</p>
+        </div>
+    </div>
+    <script>
+    function handleKeyPress(e) {
+        var evtObj = window.event? event : e;
+        if (evtObj.key === 'z') { // Use 'key' property for better compatibility
+            window.scrollBy(0, -100);
+        } else if (evtObj.key === 'a') {
+            window.scrollBy(0, 100);
+        }
+        evtObj.preventDefault(); // Prevent default behavior
+    }
+
+    document.addEventListener('keydown', handleKeyPress, false);
+</script>
+    
+</body>
+</html>
