@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>CRYSTAL HOME</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+       .welcome-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+       .welcome-message {
+            color: #ffffff;
+            font-size: 24px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+ <div class="wrapper">
+    
+    <nav class="nav">
+        <div class="nav-logo">
+            <img src="D:\BS CS\BSCSev-C 2nd Semester\DATA BASE LAB\DB PROJECT\Website\Florist Home Business Logo.jpg" alt="CRYSTAL HOME">
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li>
+                        <a href="home.html" class="link active">Home</a>
+                    </li>
+                    <li>
+                        <a href="bookings.html" class="link">Bookings</a>                      
+                     
+                    </li>
+                    <li>
+                        <a href="facilities.html" class="link">Facilities</a>
+                     
+                    </li>
+                    <li>
+                        <a href="about.html" class="link">About</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+            <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+    
+       
+        <div class="welcome-container">
+            <h1 class="welcome-message">Welcome to CRYSTAL HOME!</h1>
+            <p class="welcome-message">We're excited to have you here. Explore our services and discover how we can assist you.</p>
+        </div>
+        
+        <!-- <footer class="footer">
+            <div class="footer-content">
+                <span>&copy; 2024 Crystal Home. All rights reserved.</span>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="bx bx-facebook"></i></a></li>
+                    <li><a href="#"><i class="bx bx-twitter"></i></a></li>
+                    <li><a href="#"><i class="bx bx-instagram"></i></a></li>
+                    <li><a href="#"><i class="bx bx-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </footer> -->
+        
+<script>
+
+function myMenuFunction() {
+var i = document.getElementById("navMenu");
+
+if(i.className === "nav-menu") {
+    i.className += " responsive";
+} else {
+    i.className = "nav-menu";
+}
+}
+
+</script>
+
+<script>
+
+var a = document.getElementById("loginBtn");
+var b = document.getElementById("registerBtn");
+var x = document.getElementById("login");
+var y = document.getElementById("register");
+
+function login() {
+    x.style.left = "4px";
+    y.style.right = "-520px";
+    a.className += " white-btn";
+    b.className = "btn";
+    x.style.opacity = 1;
+    y.style.opacity = 0;
+}
+
+function register() {
+    x.style.left = "-510px";
+    y.style.right = "5px";
+    a.className = "btn";
+    b.className += " white-btn";
+    x.style.opacity = 0;
+    y.style.opacity = 1;
+}
+
+            // Function to check if the welcome message has been shown before
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie!== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+    
+            // Function to set a cookie
+            function setCookie(name, value, days) {
+                let expires = '';
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = '; expires=' + date.toUTCString();
+                }
+                document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/';
+            }
+    
+            // Show the welcome message only once per session
+            if (!getCookie('welcomeShown')) {
+                document.querySelector('.welcome-message').style.display = 'block';
+                setCookie('welcomeShown', 'true', 1);
+            }
+        </script> 
+
+</body>
+</html>
