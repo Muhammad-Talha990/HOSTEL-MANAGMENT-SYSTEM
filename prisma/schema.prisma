@@ -1,0 +1,122 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  WARDEN
+  STUDENT
+}
+
+enum RoomStatus {
+  AVAILABLE
+  FULL
+  MAINTENANCE
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum ComplaintPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum ComplaintStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  password      String
+  role          Role      @default(STUDENT)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  student       Student?
+  staff         Staff?
+}
+
+model Student {
+  id            String      @id @default(cuid())
+  userId        String      @unique
+  user          User        @relation(fields: [userId], references: [id])
+  phone         String?
+  roomId        String?
+  room          Room?       @relation(fields: [roomId], references: [id])
+  bookings      Booking[]
+  payments      Payment[]
+  complaints    Complaint[]
+}
+
+model Staff {
+  id            String    @id @default(cuid())
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id])
+  position      String
+  phone         String?
+}
+
+model Room {
+  id            String      @id @default(cuid())
+  roomNumber    String      @unique
+  type          String
+  capacity      Int
+  price         Decimal     @db.Decimal(10, 2)
+  status        RoomStatus  @default(AVAILABLE)
+  students      Student[]
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  studentId     String
+  student       Student       @relation(fields: [studentId], references: [id])
+  checkIn       DateTime
+  checkOut      DateTime
+  status        BookingStatus @default(PENDING)
+  createdAt     DateTime      @default(now())
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  studentId     String
+  student       Student       @relation(fields: [studentId], references: [id])
+  amount        Decimal       @db.Decimal(10, 2)
+  status        PaymentStatus @default(PENDING)
+  transactionId String?       @unique
+  paidAt        DateTime?
+  createdAt     DateTime      @default(now())
+}
+
+model Complaint {
+  id            String            @id @default(cuid())
+  studentId     String
+  student       Student           @relation(fields: [studentId], references: [id])
+  title         String
+  description   String            @db.Text
+  priority      ComplaintPriority @default(MEDIUM)
+  status        ComplaintStatus   @default(OPEN)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+}
